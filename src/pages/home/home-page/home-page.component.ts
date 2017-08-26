@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-interface Contact{
+interface Employees{
   name:string,
   sex:string,
-  mobile:string,
-  age?:number
+  age:number,
+  position:string,
   random?:number
 }
 
@@ -14,36 +14,32 @@ interface Contact{
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  contacts:Array<Contact>;
-  firstLine:string;
+  employees:Array<Employees>
   constructor() {
-   this.getContacts()
+   this.getEmployees();
   }
   
-  getContacts(){
-     this.contacts = [
-      {name:"LiuYuyang",sex:"M",mobile:"1316666666",age:20},
-      {name:"Wangkai",sex:"F",mobile:"1316666667"},
-      {name:"Yaoming",sex:"M",mobile:"1316666668"},
-      {name:"Yaoming",sex:"F",mobile:"1316666668"},
+  getEmployees(){
+     this.employees = [
+      {name:"张三",sex:"M",age:30,position:"Employee"},
+      {name:"李四",sex:"F",age:21,position:"Manager"},
+      {name:"王小川",sex:"M",age:25,position:"Employee"},
+      {name:"李阳",sex:"F",age:42,position:"Employee"}
     ]
-    this.firstLine =`第一个联系人是：${this.contacts[0].name}`
   }
 
-  addContact(){
-    let newContact = {
-      name:"Rita",
-      sex:"F",
-      mobile:"13677777777"
+  addEmployee(){
+    let newEmployee = {
+      name:"赵云",sex:"M",age:20,position:"employee"
     }
-    this.contacts.push(newContact)
+    this.employees.push(newEmployee)
   }
 
   asc(){
     // 正序排列
     // 数组操作API，https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-    this.contacts.sort((a,b)=>{
-      if(a.sex>b.sex){
+    this.employees.sort((a,b)=>{
+      if(a.age>b.age){
         return 1
       }else{
         return -1
@@ -54,10 +50,28 @@ export class HomePageComponent implements OnInit {
 
   desc(){
     // 逆序排列    
+    this.employees.sort((a,b)=>{
+      if(a.age<b.age){
+        return 1
+      }else{
+        return -1
+      }
+    })
   }
   random(){
-    // 随机排列
-    // 常用数学计算API，https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+    this.employees.forEach((employee)=>{
+      let randomNum = Math.random();
+      employee.random = randomNum;
+    });
+    
+    this.employees.sort((a,b)=>{
+      if(a.random<b.random){
+        return 1
+      }else{
+        return -1
+      }
+    })
   }
   ngOnInit() {
   }

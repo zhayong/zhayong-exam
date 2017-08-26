@@ -1,11 +1,21 @@
 
-<button (click)="addContact()">添加新联系人</button>
-<button (click)="asc()">正序</button>
-<button (click)="desc()">逆序</button>
-<button (click)="random()">倒序</button>
+<button (click)="addEmployee()">添加新员工</button>
+<button (click)="asc()">按年龄正序</button>
+<button (click)="desc()">按年龄逆序</button>
+<button (click)="random()">按年龄乱序</button>
 
-<div>第一个联系人是：{{this.contacts[0].name}}</div>
-<div>{{firstLine}}</div>
-<ul>
-    <li *ngFor="let user of contacts">{{user.name}} {{user.sex}} {{user.mobile}}</li>
-</ul>
+<h2 class="tittle">员工列表</h2>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+   <tr class="tb-header">
+       <th>姓名</th>
+       <th>性别</th>
+       <th>年龄</th>
+       <th>职务</th>
+   </tr>
+   <tr *ngFor="let employee of employees" class="tb-list">
+    <td class="tb-cell">{{employee.name}}</td>
+    <td class="tb-cell">{{employee.sex}}</td>
+    <td class="tb-cell">{{employee.age}}</td>
+    <td class="tb-cell">{{employee.position}}</td>
+   </tr>
+</table>
