@@ -30,7 +30,7 @@ export class HomePageComponent implements OnInit {
 
   addEmployee(){
     let newEmployee = {
-      name:"赵云",sex:"M",age:20,position:"employee"
+      name:"赵云",sex:"M",age:20,position:"Employee"
     }
     this.employees.push(newEmployee)
   }
