@@ -1,0 +1,11 @@
+
+<button (click)="addContact()">添加新联系人</button>
+<button (click)="asc()">正序</button>
+<button (click)="desc()">逆序</button>
+<button (click)="random()">倒序</button>
+
+<div>第一个联系人是：{{this.contacts[0].name}}</div>
+<div>{{firstLine}}</div>
+<ul>
+    <li *ngFor="let user of contacts">{{user.name}} {{user.sex}} {{user.mobile}}</li>
+</ul>
